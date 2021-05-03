@@ -8,9 +8,9 @@ function checkCommons(array1, array2) {
     }
 
     if(array1.length > array2.length) {
-        return doTheCheck(array1, array2);
+        return oneLinerCheck(array1, array2);
     } else {
-        return doTheCheck(array2, array1);
+        return oneLinerCheck(array2, array1);
     }
 }
 
@@ -36,6 +36,10 @@ function doTheCheckOldES(largerArray, smallerArray) {
     }
 
     return false;
+}
+
+function oneLinerCheck(array1, array2) {
+    return array1.some(item => array2.includes(item));
 }
 
 function mapToArray(array) {
