@@ -7,11 +7,7 @@ function checkCommons(array1, array2) {
         return false;
     }
 
-    if(array1.length > array2.length) {
-        return oneLinerCheck(array1, array2);
-    } else {
-        return oneLinerCheck(array2, array1);
-    }
+    return doTheCheck(array1, array2);
 }
 
 function doTheCheck(largerArray, smallerArray) {
