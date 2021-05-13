@@ -73,6 +73,22 @@ class MyArray {
             this.length--;
         }
     }
+
+    shift() {
+        return this.delete(0);
+    }
+
+    unshift(item) {
+        this.shiftRight(0);
+        this.data[0] = item;
+    }
+
+    shiftRight(index) {
+        for(let i = this.length; i > index; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+        this.length++;
+    }
 }
 
 const myArray = new MyArray();
@@ -85,4 +101,7 @@ console.log(myArray.get(4));
 console.log(myArray);
 console.log(myArray.delete(4));
 console.log(myArray.pop());
+myArray.unshift('newFirst');
+console.log(myArray);
+console.log(myArray.shift());
 console.log(myArray);
