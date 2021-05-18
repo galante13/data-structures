@@ -1,4 +1,4 @@
-function reverseString(str) {
+function reversString(str) {
     if(typeof str !== 'string' && ! (str instanceof String)){
         return;
     }
@@ -13,7 +13,7 @@ function reverseString(str) {
     return result.join('');
 }
 
-console.log(reverseString('Ala ma kota!'));
+console.log(reversString('Ala ma kota!'));
 
 function reverseStringLessSpace(str) {
     if(typeof str !== 'string' && ! (str instanceof String)){
