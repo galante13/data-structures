@@ -1,3 +1,4 @@
+const utils = require('../../utils/array-utils');
 function mergeSortedArrays(arr1, arr2) {
     if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
         return [];
@@ -25,14 +26,14 @@ function mergeSortedArrays(arr1, arr2) {
         }
 
         if (result[result.length - 3] > result[result.length - 2]) {
-            swap(result, result.length - 3, result.length - 2);
+            utils.swap(result, result.length - 3, result.length - 2);
         }
     }
 
     for (; i < greaterArray.length; i++) {
         result.push(greaterArray[i]);
         if (result[result.length - 2] > result[result.length - 1]) {
-            swap(result, result.length - 2, result.length - 1);
+            utils.swap(result, result.length - 2, result.length - 1);
         }
     }
 
@@ -54,10 +55,10 @@ function mergeSortedArrays2(arr1, arr2) {
             result.push(arr2.shift());
         }
         if (result[result.length - 3] > result[result.length - 2]) {
-            swap(result, result.length - 3, result.length - 2);
+            utils.swap(result, result.length - 3, result.length - 2);
         }
         if (result[result.length - 2] > result[result.length - 1]) {
-            swap(result, result.length - 2, result.length - 1);
+            utils.swap(result, result.length - 2, result.length - 1);
         }
     }
 
@@ -80,10 +81,10 @@ function mergeSortedArrays3(arr1, arr2) {
             result.push(arr2[i]);
         }
         if (result[result.length - 3] > result[result.length - 2]) {
-            swap(result, result.length - 3, result.length - 2);
+            utils.swap(result, result.length - 3, result.length - 2);
         }
         if (result[result.length - 2] > result[result.length - 1]) {
-            swap(result, result.length - 2, result.length - 1);
+            utils.swap(result, result.length - 2, result.length - 1);
         }
         i++;
     }
@@ -126,12 +127,6 @@ function mergeSortedArrays4(arr1, arr2) {
     }
 
     return result;
-}
-
-function swap(arr, index1, index2) {
-    const temp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = temp;
 }
 
 
