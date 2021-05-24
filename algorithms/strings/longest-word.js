@@ -1,10 +1,8 @@
 function longestWord(sen) {
     let longestLength = 0;
     let longestStart = 0;
-    let longestEnd = -1;
     let wordLength = 0;
     let wordStart = -1;
-    let wordEnd = -1;
 
     const wordArray = sen.split('');
     for(let i = 0; i < wordArray.length; i++){
