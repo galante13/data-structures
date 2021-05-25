@@ -31,6 +31,32 @@ class HashTable {
 
         return undefined;
     }
+
+    keys() {
+        const keys = [];
+        for(let i = 0; i < this.data.length; i++) {
+            if(this.data[i]) {
+                for(let j = 0; j < this.data[i].length; j++) {
+                    keys.push(this.data[i][j][0]);
+                }
+            }
+        }
+
+        return keys;
+    }
+
+    values() {
+        const values = [];
+        for(let i = 0; i < this.data.length; i++) {
+            if(this.data[i]) {
+                for(let j = 0; j < this.data[i].length; j++) {
+                    values.push(this.data[i][j][1]);
+                }
+            }
+        }
+
+        return values;
+    }
 }
 
 const myHashTable = new HashTable(1);
@@ -40,3 +66,5 @@ console.log(myHashTable.get('grapes'));
 myHashTable.set('apples', 9)
 console.log(myHashTable);
 console.log(myHashTable.get('apples'));
+console.log(myHashTable.keys());
+console.log(myHashTable.values());
