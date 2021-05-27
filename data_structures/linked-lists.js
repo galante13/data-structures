@@ -174,5 +174,11 @@ list.remove( list.size - 1);
 list.print()
 console.log('size: ' + list.size);
 
+console.log();
+list.delete( 4);
+list.print()
+console.log('size: ' + list.size);
+
+
 
 
