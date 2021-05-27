@@ -46,7 +46,7 @@ class DoublyLinkedList {
         }
     }
 
-    lookup(value) {
+    search(value) {
         if(this.head.value === value) {
             return this.head;
         }
@@ -113,13 +113,38 @@ class DoublyLinkedList {
         this.size--;
     }
 
+    get(index) {
+        if (index > (this.size - 1)) {
+            return this.traverseToIndexBackwards(index);
+        } else {
+            return this.traverseToIndex(index);
+        }
+    }
+
     traverseToIndex(index) {
         let node = this.head;
-        if(index === 0) {
+        if (index === 0) {
             return node;
         }
-        while(index--) {
+        if (index === this.size - 1) {
+            return this.tail;
+        }
+        while (index--) {
             node = node.next;
+        }
+        return node;
+    }
+
+    traverseToIndexBackwards(index) {
+        let node = this.tail;
+        if (index === 0) {
+            return this.head;
+        }
+        if (index === this.size - 1) {
+            return node;
+        }
+        while (index--) {
+            node = node.prev;
         }
         return node;
     }
@@ -169,8 +194,8 @@ console.log();
 console.log('size: ' + list.size);
 console.log();
 
-console.log(list.lookup(3));
-console.log(list.lookup(1));
+console.log(list.search(3));
+console.log(list.search(1));
 
 console.log();
 list.prepend(0);
@@ -225,5 +250,9 @@ list.delete( 4);
 list.print()
 list.printBackwards();
 console.log('size: ' + list.size);
+
+console.log();
+console.log(list.get(0));
+console.log(list.get(2));
 
 

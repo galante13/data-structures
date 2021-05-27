@@ -75,7 +75,7 @@ class LinkedList {
         this.size++;
     }
 
-    lookup(value) {
+    search(value) {
         let head = this.head;
         while(head != null) {
             if(head.value === value){
@@ -131,8 +131,8 @@ console.log();
 console.log('size: ' + list.size);
 console.log();
 
-console.log(list.lookup(3));
-console.log(list.lookup(1));
+console.log(list.search(3));
+console.log(list.search(1));
 
 console.log();
 list.prepend(0);
