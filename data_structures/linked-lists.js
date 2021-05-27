@@ -200,6 +200,10 @@ list.reverse( );
 list.print()
 console.log('size: ' + list.size);
 
+module.exports = {
+    LinkedList: LinkedList
+}
+
 
 
 
