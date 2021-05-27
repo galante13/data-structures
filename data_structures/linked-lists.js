@@ -98,6 +98,22 @@ class LinkedList {
         return node;
     }
 
+    reverse() {
+        if(this.size > 1) {
+            let prev = this.head;
+            let node = this.head.next;
+            while(node) {
+                const temp = node.next;
+                node.next = prev;
+                prev = node;
+                node = temp;
+            }
+            this.tail = this.head;
+            this.head = prev;
+            this.tail.next = null;
+        }
+    }
+
     print() {
         let head = this.head;
         while(head != null) {
@@ -176,6 +192,11 @@ console.log('size: ' + list.size);
 
 console.log();
 list.delete( 4);
+list.print()
+console.log('size: ' + list.size);
+
+console.log();
+list.reverse( );
 list.print()
 console.log('size: ' + list.size);
 

@@ -149,6 +149,24 @@ class DoublyLinkedList {
         return node;
     }
 
+    reverse() {
+        if(this.size > 1) {
+            let prev = this.head;
+            let node = this.head.next;
+            while(node) {
+                const temp = node.next;
+                node.next = prev;
+                prev.prev = node;
+                prev = node;
+                node = temp;
+            }
+            this.tail = this.head;
+            this.head = prev;
+            this.head.prev = null;
+            this.tail.next = null;
+        }
+    }
+
     print() {
         let head = this.head;
         while(head != null) {
@@ -255,4 +273,9 @@ console.log();
 console.log(list.get(0));
 console.log(list.get(2));
 
+console.log();
+list.reverse( );
+list.print()
+list.printBackwards()
+console.log('size: ' + list.size);
 
