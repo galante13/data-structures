@@ -93,7 +93,7 @@ class Stack1 {
     }
 }
 
-class Stack {
+class Stacks {
     constructor() {
         this.arr = [];
     }
@@ -121,7 +121,7 @@ class Stack {
     }
 }
 
-const stack = new Stack();
+const stack = new Stacks();
 
 stack.push(1);
 stack.push(2);
