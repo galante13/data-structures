@@ -30,13 +30,13 @@ class Stack2 {
 
     pop() {
         if (this.length === 0) return this.top;
+
         const top = this.top;
-        if (this.top.next) {
-            this.top = this.top.next;
-        } else {
-            this.top = null;
+        if (this.length === 1) {
             this.bottom = null;
         }
+
+        this.top = this.top.next;
         this.length--;
         return top;
     }
@@ -61,7 +61,7 @@ class Stack1 {
     }
 
     peek() {
-        if(this.length > 0){
+        if (this.length > 0) {
             return this.arr[0];
         }
 
@@ -74,7 +74,7 @@ class Stack1 {
     }
 
     pop() {
-        if(this.length === 0){
+        if (this.length === 0) {
             return null;
         }
         const el = this.arr[this.length - 1];
@@ -85,7 +85,7 @@ class Stack1 {
     print() {
         console.log()
         console.log('PRINT')
-        for(let i = this.length - 1; i >= 0; i--){
+        for (let i = this.length - 1; i >= 0; i--) {
             console.log(this.arr[i]);
         }
         console.log('PRINT SIZE ' + this.length)
@@ -99,7 +99,7 @@ class Stacks {
     }
 
     peek() {
-       return this.arr[this.arr.length - 1];
+        return this.arr[this.arr.length - 1];
     }
 
     push(value) {
@@ -113,7 +113,7 @@ class Stacks {
     print() {
         console.log()
         console.log('PRINT')
-        for(let i = this.arr.length - 1; i >= 0; i--){
+        for (let i = this.arr.length - 1; i >= 0; i--) {
             console.log(this.arr[i]);
         }
         console.log('PRINT SIZE ' + this.arr.length)
