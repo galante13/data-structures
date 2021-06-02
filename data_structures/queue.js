@@ -18,7 +18,7 @@ class Queue2 {
 
     enqueue(value) {
         const node = new Node(value);
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.first = node;
             this.last = node;
         } else {
@@ -30,7 +30,7 @@ class Queue2 {
     }
 
     dequeue() {
-        if(this.length === 0){
+        if (this.length === 0) {
             return null;
         }
 
@@ -38,7 +38,7 @@ class Queue2 {
         let first = this.first;
         this.first = this.first.next;
         this.length--;
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.last = null;
         }
         return first;
@@ -59,23 +59,21 @@ class Queue2 {
 
 class Queue {
     constructor() {
-        this.dequeueStack = new Stack();
-        this.enqueueStack = new Stack();
+        this.dequeueStack = [];
+        this.enqueueStack = [];
     }
 
     peek() {
         if(this.enqueueStack.length > 0) {
-            const length = this.enqueueStack.length;
-            for(let i = 0; i < length; i++) {
-                this.dequeueStack.push(this.enqueueStack.pop());
-            }
+            return this.enqueueStack[0];
         }
-        return this.dequeueStack.peek();
+
+        return this.dequeueStack[this.dequeueStack.length - 1];
     }
 
     enqueue(value) {
         const length = this.dequeueStack.length;
-        for(let i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
             this.enqueueStack.push(this.dequeueStack.pop());
         }
 
@@ -84,7 +82,61 @@ class Queue {
 
     dequeue() {
         const length = this.enqueueStack.length;
-        for(let i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
+            this.dequeueStack.push(this.enqueueStack.pop())
+        }
+
+        return this.dequeueStack.pop();
+    }
+
+    print() {
+        console.log()
+        console.log('PRINT')
+        if (this.dequeueStack.length > 0) {
+            for (let i = this.dequeueStack.length - 1; i >= 0; i--) {
+                console.log(this.dequeueStack[i]);
+            }
+            console.log('PRINT SIZE ' + this.dequeueStack.length)
+        } else if (this.enqueueStack.length > 0) {
+            for (let i = 0; i < this.enqueueStack.length; i++) {
+                console.log(this.enqueueStack[i]);
+            }
+            console.log('PRINT SIZE ' + this.enqueueStack.length)
+        } else {
+            console.log('PRINT SIZE ' + 0)
+        }
+        console.log()
+    }
+}
+
+class Queue3 {
+    constructor() {
+        this.dequeueStack = new Stack();
+        this.enqueueStack = new Stack();
+    }
+
+    peek() {
+        if (this.enqueueStack.length > 0) {
+            const length = this.enqueueStack.length;
+            for (let i = 0; i < length; i++) {
+                this.dequeueStack.push(this.enqueueStack.pop());
+            }
+        }
+        return this.dequeueStack.peek();
+    }
+
+    enqueue(value) {
+        const length = this.dequeueStack.length;
+        for (let i = 0; i < length; i++) {
+            this.enqueueStack.push(this.dequeueStack.pop());
+        }
+
+        this.enqueueStack.push(value);
+    }
+
+    dequeue() {
+        const length = this.enqueueStack.length;
+        for (let i = 0; i < length; i++) {
             this.dequeueStack.push(this.enqueueStack.pop());
         }
 
@@ -93,7 +145,7 @@ class Queue {
 
     print() {
         const length = this.enqueueStack.length;
-        for(let i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
             this.dequeueStack.push(this.enqueueStack.pop());
         }
         this.dequeueStack.print();
