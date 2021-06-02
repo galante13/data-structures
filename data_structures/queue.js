@@ -65,9 +65,12 @@ class Queue {
 
     peek() {
         if(this.enqueueStack.length > 0) {
-            return this.enqueueStack.peek();
+            const length = this.enqueueStack.length;
+            for(let i = 0; i < length; i++) {
+                this.dequeueStack.push(this.enqueueStack.pop());
+            }
         }
-        return this.enqueueStack.peek();
+        return this.dequeueStack.peek();
     }
 
     enqueue(value) {
@@ -152,10 +155,12 @@ const queue = new Queue();
 queue.enqueue(1);
 queue.enqueue(2);
 queue.enqueue(3);
+console.log(queue.peek());
 
 queue.print();
 
 console.log(queue.dequeue());
+console.log(queue.peek());
 
 queue.print();
 
@@ -170,6 +175,7 @@ queue.print();
 queue.enqueue(1);
 queue.enqueue(2);
 queue.enqueue(3);
+console.log(queue.peek());
 queue.print();
 
 
