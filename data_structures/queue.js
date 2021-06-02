@@ -59,6 +59,34 @@ class Queue2 {
 
 class Queue {
     constructor() {
+        this.arr = [];
+    }
+
+    peek() {
+        return this.arr[0];
+    }
+
+    enqueue(value) {
+        this.arr.push(value);
+    }
+
+    dequeue() {
+        return this.arr.shift();
+    }
+
+    print() {
+        console.log();
+        console.log('PRINT');
+        for(let i = 0; i < this.arr.length; i++) {
+            console.log(this.arr[i]);
+        }
+        console.log('PRINT SIZE ' + this.arr.length);
+        console.log();
+    }
+}
+
+class Queue4 {
+    constructor() {
         this.dequeueStack = [];
         this.enqueueStack = [];
     }
