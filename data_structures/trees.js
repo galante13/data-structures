@@ -63,6 +63,78 @@ class Tree {
             this.traverse(startNode.right);
         }
     }
+
+    breadthFirstSearch() {
+        let result = [];
+        let queue = [this.root];
+        while(queue.length > 0) {
+            let currentNode = queue.shift();
+            result.push(currentNode);
+
+            if(currentNode.left != null) {
+                queue.push(currentNode.left);
+            }
+
+            if(currentNode.right != null) {
+                queue.push(currentNode.right);
+            }
+        }
+        return result.map(m => m.value);
+    }
+
+    breadthFirstSearchRecursive(queue, result) {
+        if(!queue.length) {
+            return result;
+        }
+        let currentNode = queue.shift();
+        result.push(currentNode);
+
+        if(currentNode.left != null) {
+            queue.push(currentNode.left);
+        }
+
+        if(currentNode.right != null) {
+            queue.push(currentNode.right);
+        }
+        return this.breadthFirstSearchRecursive(queue, result);
+    }
+
+    traverseInOrder(node, result) {
+        if(node.left) {
+            this.traverseInOrder(node.left, result);
+        }
+
+        result.push(node);
+
+        if(node.right) {
+            this.traverseInOrder(node.right, result);
+        }
+
+        return result;
+    }
+
+    traversePreOrder(node, result) {
+        result.push(node);
+        if(node.left) {
+            this.traversePreOrder(node.left, result);
+        }
+        if(node.right) {
+            this.traversePreOrder(node.right, result);
+        }
+
+        return result;
+    }
+
+    traversePostOrder(node, result) {
+        if(node.left) {
+            this.traversePostOrder(node.left, result);
+        }
+        if(node.right) {
+            this.traversePostOrder(node.right, result);
+        }
+        result.push(node);
+        return result;
+    }
 }
 
 class Node {
@@ -76,16 +148,13 @@ class Node {
 
 const tree = new Tree();
 
-tree.insert(24);
-tree.insert(24);
-tree.insert(10);
-tree.insert(7);
-tree.insert(3);
-tree.insert(5);
-tree.insert(11);
-tree.insert(21);
+tree.insert(9);
+tree.insert(4);
+tree.insert(6);
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
 tree.insert(1);
-tree.insert(2);
 
 console.log(tree.lookup(21));
 console.log(tree.lookup(1));
@@ -93,3 +162,8 @@ console.log(tree.lookup(11));
 console.log(tree.lookup(111));
 
 tree.traverse(tree.root);
+console.log(tree.breadthFirstSearch());
+console.log(tree.breadthFirstSearchRecursive([tree.root], []).map(v => v.value));
+console.log(tree.traverseInOrder(tree.root, []).map(v => v.value));
+console.log(tree.traversePreOrder(tree.root, []).map(v => v.value));
+console.log(tree.traversePostOrder(tree.root, []).map(v => v.value));
